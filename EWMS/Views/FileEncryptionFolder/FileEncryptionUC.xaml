@@ -1,0 +1,470 @@
+﻿<UserControl x:Class="EWMS.FileEncryptionUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:EWMS.ViewModels"
+             xmlns:views="clr-namespace:EWMS"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="600"
+             d:DesignWidth="1000">
+
+    <UserControl.Resources>
+
+        <Style x:Key="CypherTypeButton"
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="#1e1e1e" />
+            <Setter Property="BorderBrush"
+                    Value="#1a1a1a" />
+            <Setter Property="BorderThickness"
+                    Value="0 2 0 2" />
+            <Setter Property="Foreground"
+                    Value="#eee" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="Height"
+                    Value="60" />
+            <Setter Property="OverridesDefaultStyle"
+                    Value="True" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="Opacity"
+                    Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border"
+                                BorderThickness="0"
+                                BorderBrush="Black"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Opacity"
+                                        Value="0.7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate DataType="{x:Type vm:NoParamVM}">
+
+            <views:NoParamUC />
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RC4ParamVM}">
+
+            <views:RC4ParamUC />
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:AESParamVM}">
+
+            <views:AESParamUC />
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:DescriptionVM}">
+
+            <views:DescriptionUC />
+
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <Grid Margin="30 10 30 30">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="250" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Grid.RowSpan="2"
+                Background="#222"
+                CornerRadius="10"
+                Margin="0 0 10 0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Background="#333"
+                        CornerRadius="10"
+                        Margin="20 20 10 20">
+
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Border Background="#1e1e1e"
+                                Grid.Row="0"
+                                CornerRadius="10"
+                                Margin="0 0 0 5">
+
+                            <Label Content="{Binding CipherName}"
+                                   FontSize="15"
+                                   Foreground="#eee"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                            </Label>
+
+                        </Border>
+
+                        <Border Background="#1e1e1e"
+                                Grid.Row="1"
+                                CornerRadius="10">
+                            <Grid Margin="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="1" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0"
+                                        FontSize="15"
+                                        BorderBrush="#1e1e1e"
+                                        Background="#1e1e1e"
+                                        Foreground="#eee"
+                                        Content="ENCRYPTION"
+                                        Command="{Binding ChangeToEncryptionCommand}">
+                                </Button>
+
+                                <Rectangle Grid.Column="1"
+                                           Fill="#999">
+                                </Rectangle>
+
+                                <Button Grid.Column="2"
+                                        FontSize="15"
+                                        BorderBrush="#1e1e1e"
+                                        Background="#1e1e1e"
+                                        Foreground="#eee"
+                                        Content="DECRYPTION"
+                                        Command="{Binding ChangeToDecryptionCommand}">
+                                </Button>
+                            </Grid>
+                        </Border>
+
+                        <Border Background="#1e1e1e"
+                                Grid.Row="2"
+                                CornerRadius="10"
+                                Margin="0 5 0 10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="5"></RowDefinition>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+
+                                <Rectangle Grid.Row="1"
+                                           Fill="#333">
+                                </Rectangle>
+
+                                <Grid Grid.Row="0"
+                                      Margin="5">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="1" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Button Grid.Column="0"
+                                            FontSize="12"
+                                            BorderBrush="#1e1e1e"
+                                            Background="#1e1e1e"
+                                            Foreground="#eee"
+                                            Content="CIPHER PARAM."
+                                            Command="{Binding ChangeToCipherParamPanelCommand}">
+                                    </Button>
+
+                                    <Rectangle Grid.Column="1"
+                                               Fill="#999">
+                                    </Rectangle>
+
+                                    <Button Grid.Column="2"
+                                            FontSize="12"
+                                            BorderBrush="#1e1e1e"
+                                            Background="#1e1e1e"
+                                            Foreground="#eee"
+                                            Content="DESCRIPTION"
+                                            Command="{Binding ChangeToCipherDescriptionPanelCommand}">
+                                    </Button>
+                                </Grid>
+
+                                <ScrollViewer Grid.Row="3"
+                                              Background="#1a1a1a">
+
+                                    <ContentControl Content="{Binding Path=CipherParamDescriptionPanelVM}" />
+
+                                </ScrollViewer>
+
+                            </Grid>
+                        </Border>
+
+                        <Border Background="#1e1e1e"
+                                Grid.Row="3"
+                                CornerRadius="10">
+
+                            <Button FontSize="15"
+                                    Margin="3"
+                                    BorderBrush="#1e1e1e"
+                                    Background="#1e1e1e"
+                                    Foreground="#eee"
+                                    Content="DO IT!"
+                                    Command="{Binding DoEncryptionCommand}">
+                            </Button>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Border Background="#1e1e1e"
+                            Grid.Row="0"
+                            CornerRadius="10"
+                            Margin="10 20 20 10">
+
+                        <Label Content="{Binding DecryptionEncryptionHeader}"
+                               FontSize="15"
+                               Foreground="#eee"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center">
+                        </Label>
+
+                    </Border>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="1"
+                          Margin="10 10 20 10">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                                Background="#444"
+                                BorderBrush="#999"
+                                BorderThickness="0.5">
+                            <TextBlock FontSize="15"
+                                       Foreground="#eee"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Text="INPUT FILE">
+                            </TextBlock>
+                        </Border>
+
+                        <ScrollViewer Grid.Row="1">
+                            <TextBlock FontSize="15"
+                                       Padding="10 20 10 20"
+                                       Background="#1a1a1a"
+                                       Foreground="#eee"
+                                       TextWrapping="Wrap"
+                                       Text="{Binding InputFile}">
+                            </TextBlock>
+                        </ScrollViewer>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="40" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0"
+                                    Background="#444"
+                                    FontSize="10"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Foreground="#eee"
+                                    Content="LOAD"
+                                    Command="{Binding LoadInputFileCommand}">
+                            </Button>
+
+                            <Rectangle Grid.Column="1"
+                                       Stroke="#999"
+                                       StrokeThickness="0"
+                                       Fill="#444">
+                            </Rectangle>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="2"
+                          Grid.Column="1"
+                          Margin="10 10 20 20">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                                Background="#444"
+                                BorderBrush="#999"
+                                BorderThickness="0.5">
+                            <TextBlock FontSize="15"
+                                       Foreground="#eee"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Text="OUTPUT FILE">
+                            </TextBlock>
+                        </Border>
+
+                        <ScrollViewer Grid.Row="1">
+                            <TextBlock FontSize="15"
+                                       Padding="10 20 10 20"
+                                       Background="#1a1a1a"
+                                       Foreground="#eee"
+                                       TextWrapping="Wrap"
+                                       Text="{Binding OutputFile}">
+                            </TextBlock>
+                        </ScrollViewer>
+
+                        <Border Grid.Row="2"
+                                BorderBrush="#999"
+                                BorderThickness="0.5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0"
+                                        Background="#444"
+                                        FontSize="10"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        Foreground="#eee"
+                                        Content="SAVE"
+                                        Command="{Binding SaveOutputFileCommand}">
+                                </Button>
+
+                                <Rectangle Grid.Column="1"
+                                           Stroke="#999"
+                                           StrokeThickness="0"
+                                           Fill="#444">
+                                </Rectangle>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                    Background="#1e1e1e"
+                    CornerRadius="10"
+                    Margin="10 0 0 10">
+
+                <TextBlock Margin="5"
+                           Background="#1e1e1e"
+                           Foreground="#eee"
+                           FontSize="20"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                        CIPHER SELECTION
+                </TextBlock>
+            </Border>
+
+            <Border Grid.Row="1"
+                    Background="#1e1e1e"
+                    CornerRadius="10"
+                    Margin="10 0 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="5"></RowDefinition>
+                        <RowDefinition Height="20"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="20"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0"
+                          Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                FontSize="12"
+                                BorderBrush="#1e1e1e"
+                                Background="#1e1e1e"
+                                Foreground="#eee"
+                                Content="STREAM"
+                                Command="{Binding ChangeToStreamCiphersListCommand}">
+                        </Button>
+
+                        <Rectangle Grid.Column="1"
+                                   Fill="#999">
+                        </Rectangle>
+
+                        <Button Grid.Column="2"
+                                FontSize="12"
+                                BorderBrush="#1e1e1e"
+                                Background="#1e1e1e"
+                                Foreground="#eee"
+                                Content="BLOCK"
+                                Command="{Binding ChangeToBlockCiphersListCommand}">
+                        </Button>
+                    </Grid>
+
+                    <Rectangle Grid.Row="1"
+                               Fill="#333">
+                    </Rectangle>
+
+                    <ScrollViewer Grid.Row="3"
+                                  Background="#1a1a1a">
+
+                        <ItemsControl ItemsSource="{Binding CipherTypeList}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource CypherTypeButton}"
+                                            Content="{Binding CipherTypeName}"
+                                            Command="{Binding ChangeCipherTypeCommand}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

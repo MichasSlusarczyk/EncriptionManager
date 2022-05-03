@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\CiphersParameters\AESParamUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CiphersParameters\CaesarParamUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CiphersParameters\FenceParamUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CiphersParameters\NihilistParamUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CiphersParameters\NoParamUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CiphersParameters\RC4ParamUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CiphersParameters\VigenereParamUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Common\DescriptionUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Common\TextParametersUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\FileEncryptionFolder\FileEncryptionUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PasswordManagerFolder\HashParametersUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PasswordManagerFolder\PasswordManagerUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PasswordManagerFolder\PasswordParametersUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SteganographyFolder\SteganographyDecryptionPanelUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SteganographyFolder\SteganographyEncryptionPanelUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SteganographyFolder\SteganographyParametersUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SteganographyFolder\SteganographyUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TextEncryptionFolder\TextEncryptionUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
