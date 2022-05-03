@@ -1,4 +1,4 @@
-# Project Name
+# Encription Manager
 > An application for performing encryption and steganographic operations with the use of a number of different algorithms. This project served as an engineering project.
 
 ## Table of Contents
