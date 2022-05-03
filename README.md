@@ -1,5 +1,5 @@
 # Encription Manager
-> An application for performing encryption and steganographic operations with the use of a number of different algorithms. This project served as an engineering project.
+> An application for performing encryption and steganographic operations which the use of a number of different algorithms. This project served as an engineering project.
 
 ## Table of Contents
 * [Technologies Used](#technologies-used)
@@ -8,7 +8,7 @@
 
 ## Technologies Used
 - .NET 5.0 application wroted in C#
-- WPF  for user interface
+- WPF for user interface
 
 ## Features
 - encripting texts with more than 10 different ciphers
